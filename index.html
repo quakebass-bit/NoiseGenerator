@@ -22,34 +22,28 @@
             --bg-main: #040805;
             --bg-surface: #08110b;
             --bg-elevated: #0e1e13;
-            --border-subtle: rgba(57, 255, 20, 0.22);
+            --border-subtle: rgba(57, 255, 20, 0.25);
             --text-primary: #eaffef;
             --text-muted: #6f9c7b;
             --neon: #39ff14;
-            --neon-soft: #00ff66;
-            --neon-bg: rgba(57, 255, 20, 0.13);
-            --neon-glow: rgba(57, 255, 20, 0.55);
-            --neon-glow-strong: rgba(57, 255, 20, 0.9);
+            --neon-bg: rgba(57, 255, 20, 0.14);
+            --neon-glow: rgba(57, 255, 20, 0.45);
             --accent-red: #ff2a5f;
-            --red-glow: rgba(255, 42, 95, 0.65);
-            --shadow-card: 0 12px 34px rgba(0, 0, 0, 0.7), 0 0 18px rgba(57, 255, 20, 0.08);
+            --red-glow: rgba(255, 42, 95, 0.45);
         }
 
         [data-theme="light"] {
             --bg-main: #edf5ef;
             --bg-surface: #ffffff;
             --bg-elevated: #dcece0;
-            --border-subtle: rgba(0, 168, 62, 0.25);
+            --border-subtle: rgba(0, 168, 62, 0.28);
             --text-primary: #07210f;
             --text-muted: #4b7257;
             --neon: #00c846;
-            --neon-soft: #00e050;
             --neon-bg: rgba(0, 200, 70, 0.14);
-            --neon-glow: rgba(0, 200, 70, 0.4);
-            --neon-glow-strong: rgba(0, 200, 70, 0.7);
+            --neon-glow: rgba(0, 200, 70, 0.35);
             --accent-red: #e11d48;
-            --red-glow: rgba(225, 29, 72, 0.45);
-            --shadow-card: 0 10px 26px rgba(7, 33, 15, 0.09);
+            --red-glow: rgba(225, 29, 72, 0.35);
         }
 
         * {
@@ -60,7 +54,6 @@
         body {
             font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-main);
-            background-image: radial-gradient(circle at 50% 0%, rgba(57, 255, 20, 0.09), transparent 55%);
             color: var(--text-primary);
             margin: 0;
             padding: env(safe-area-inset-top, 16px) 16px env(safe-area-inset-bottom, 16px);
@@ -87,7 +80,6 @@
             border: 1px solid var(--border-subtle);
             border-radius: 16px;
             padding: 10px 14px;
-            box-shadow: var(--shadow-card);
         }
 
         .brand-badge {
@@ -105,7 +97,7 @@
 
         .status-dot.live {
             background: var(--neon);
-            box-shadow: 0 0 10px var(--neon), 0 0 22px var(--neon-glow-strong);
+            box-shadow: 0 0 8px var(--neon);
         }
 
         .brand-title {
@@ -113,25 +105,45 @@
             font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(57, 255, 20, 0.25);
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bg-pill-btn {
+            height: 36px;
+            padding: 0 10px;
+            border-radius: 10px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .bg-pill-btn.active {
+            background: var(--neon-bg);
+            color: var(--neon);
+            border-color: var(--neon);
+            box-shadow: 0 0 8px var(--neon-glow);
         }
 
         .icon-action-btn {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border-radius: 10px;
             border: 1px solid var(--border-subtle);
             background: var(--bg-elevated);
             color: var(--text-primary);
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             display: grid;
             place-items: center;
-        }
-
-        .icon-action-btn:hover {
-            border-color: var(--neon);
-            box-shadow: 0 0 12px var(--neon-glow);
         }
 
         /* INFO CARD */
@@ -140,7 +152,6 @@
             border: 1px solid var(--border-subtle);
             border-radius: 18px;
             padding: 18px;
-            box-shadow: var(--shadow-card);
         }
 
         .info-top {
@@ -153,7 +164,6 @@
             color: var(--neon);
             letter-spacing: 0.05em;
             margin-bottom: 10px;
-            text-shadow: 0 0 8px var(--neon-glow);
         }
 
         .info-header-row {
@@ -175,7 +185,7 @@
             margin: 4px 0 0;
         }
 
-        /* STATIC NEON BARS (NO ANIMATION = ZERO AUDIO STUTTER) */
+        /* STATIC NEON BARS */
         .neon-eq {
             display: flex;
             align-items: flex-end;
@@ -198,7 +208,7 @@
 
         .neon-eq.live span {
             background: var(--neon);
-            box-shadow: 0 0 8px var(--neon), 0 0 14px var(--neon-glow-strong);
+            box-shadow: 0 0 6px var(--neon);
         }
 
         /* CONTROL CARD */
@@ -207,7 +217,6 @@
             border: 1px solid var(--border-subtle);
             border-radius: 18px;
             padding: 18px;
-            box-shadow: var(--shadow-card);
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -241,17 +250,11 @@
             cursor: pointer;
         }
 
-        .btn-noise:hover {
-            color: var(--text-primary);
-            border-color: var(--neon);
-        }
-
         .btn-noise.active {
             background: var(--neon-bg);
             color: var(--neon);
             border-color: var(--neon);
-            text-shadow: 0 0 8px var(--neon-glow);
-            box-shadow: 0 0 14px rgba(57, 255, 20, 0.3), inset 0 0 10px rgba(57, 255, 20, 0.18);
+            box-shadow: 0 0 10px var(--neon-glow);
         }
 
         .control-group {
@@ -277,38 +280,19 @@
             padding: 3px 9px;
             border-radius: 8px;
             border: 1px solid var(--border-subtle);
-            text-shadow: 0 0 8px var(--neon-glow);
         }
 
-        .control-group:focus-within .value-pill,
-        .control-group.dragging .value-pill {
-            border-color: var(--neon);
-            box-shadow: 0 0 12px var(--neon-glow);
-        }
-
-        /* GLOWING NEON SLIDERS */
+        /* LIGHTWEIGHT NEON SLIDERS (NO HEAVY GPU REPAINTS) */
         input[type="range"] {
-            --fill: 50%;
             -webkit-appearance: none;
             appearance: none;
             width: 100%;
             height: 8px;
             border-radius: 999px;
-            background: linear-gradient(
-                90deg,
-                var(--neon) 0%,
-                var(--neon-soft) var(--fill),
-                var(--bg-elevated) var(--fill),
-                var(--bg-elevated) 100%
-            );
-            box-shadow: 0 0 10px rgba(57, 255, 20, 0.25), inset 0 0 4px rgba(0, 0, 0, 0.5);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
             outline: none;
             cursor: pointer;
-        }
-
-        input[type="range"]:hover,
-        input[type="range"]:active {
-            box-shadow: 0 0 16px var(--neon-glow);
         }
 
         input[type="range"]::-webkit-slider-thumb {
@@ -319,13 +303,8 @@
             border-radius: 50%;
             background: var(--neon);
             border: 3px solid var(--bg-surface);
-            box-shadow: 0 0 10px var(--neon), 0 0 22px var(--neon-glow-strong);
+            box-shadow: 0 0 8px var(--neon);
             cursor: pointer;
-        }
-
-        input[type="range"]:active::-webkit-slider-thumb {
-            transform: scale(1.18);
-            box-shadow: 0 0 18px var(--neon), 0 0 34px var(--neon-glow-strong);
         }
 
         input[type="range"]::-moz-range-thumb {
@@ -334,7 +313,7 @@
             border-radius: 50%;
             background: var(--neon);
             border: 3px solid var(--bg-surface);
-            box-shadow: 0 0 10px var(--neon), 0 0 22px var(--neon-glow-strong);
+            box-shadow: 0 0 8px var(--neon);
             cursor: pointer;
         }
 
@@ -352,18 +331,14 @@
             letter-spacing: 0.06em;
             text-transform: uppercase;
             cursor: pointer;
-            box-shadow: 0 0 16px var(--neon-glow), 0 0 32px rgba(57, 255, 20, 0.28);
-        }
-
-        .btn-toggle:hover {
-            box-shadow: 0 0 22px var(--neon-glow-strong), 0 0 42px var(--neon-glow);
+            box-shadow: 0 0 12px var(--neon-glow);
         }
 
         .btn-toggle.playing {
             background: var(--accent-red);
             border-color: var(--accent-red);
             color: #ffffff;
-            box-shadow: 0 0 18px var(--red-glow), 0 0 34px rgba(255, 42, 95, 0.35);
+            box-shadow: 0 0 12px var(--red-glow);
         }
 
         .bg-hint {
@@ -384,7 +359,10 @@
                 <span class="status-dot" id="status-dot"></span>
                 <span class="brand-title">NOISE ENGINE</span>
             </div>
-            <button class="icon-action-btn" id="theme-toggle-btn" title="Toggle theme">☀️</button>
+            <div class="top-actions">
+                <button class="bg-pill-btn active" id="bg-mode-btn" title="Background lock-screen anchor">BG: ON</button>
+                <button class="icon-action-btn" id="theme-toggle-btn" title="Toggle theme">☀️</button>
+            </div>
         </header>
 
         <!-- HEADER CARD -->
@@ -396,7 +374,7 @@
             <div class="info-header-row">
                 <div>
                     <h1 class="info-title">Noise Generator</h1>
-                    <p class="info-subtitle">Soft background sound with lock-screen playback</p>
+                    <p class="info-subtitle">Soft background sound for focus and rest</p>
                 </div>
                 <div class="neon-eq" id="neon-eq" aria-hidden="true">
                     <span></span><span></span><span></span><span></span><span></span>
@@ -446,19 +424,17 @@
             <button id="togglePlay" class="btn-toggle">▶ Start Noise</button>
         </main>
 
-        <div class="bg-hint">LOCK-SCREEN AUDIO &amp; OFFLINE READY</div>
+        <div class="bg-hint">NEON ENGINE V5 • CLEAN AUDIO</div>
     </div>
 
-    <!-- Hidden audio anchor to keep mobile background playback alive -->
-    <audio id="bg-keepalive" loop playsinline preload="auto"></audio>
+    <!-- Optional silent anchor for lock-screen playback -->
+    <audio id="bg-keepalive" loop playsinline preload="none"></audio>
 
     <script>
         // --- PWA Service Worker ---
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js').catch(err => {
-                    console.warn('SW registration failed:', err);
-                });
+                navigator.serviceWorker.register('./sw.js').catch(() => {});
             });
         }
 
@@ -475,6 +451,7 @@
         const statusDot = document.getElementById('status-dot');
         const neonEq = document.getElementById('neon-eq');
         const themeBtn = document.getElementById('theme-toggle-btn');
+        const bgModeBtn = document.getElementById('bg-mode-btn');
         const metaThemeColor = document.getElementById('meta-theme-color');
         const bgKeepAlive = document.getElementById('bg-keepalive');
 
@@ -488,31 +465,37 @@
         let noiseSource = null;
         let filterNode = null;
         let gainNode = null;
+        const bufferCache = {}; // Cached 5s buffers => 0ms switching, zero stutter
         let keepAliveReady = false;
         let isPlaying = false;
         let currentNoiseType = localStorage.getItem('noise_type') || 'brown';
+        let bgAnchorEnabled = localStorage.getItem('noise_bg_anchor') !== 'off';
 
-        // --- Slider Neon Fill Helper ---
-        function updateSliderFill(input) {
-            const min = parseFloat(input.min);
-            const max = parseFloat(input.max);
-            const val = parseFloat(input.value);
-            const pct = ((val - min) / (max - min)) * 100;
-            input.style.setProperty('--fill', `${pct}%`);
+        function updateBgBtn() {
+            bgModeBtn.textContent = bgAnchorEnabled ? 'BG: ON' : 'BG: OFF';
+            bgModeBtn.classList.toggle('active', bgAnchorEnabled);
         }
+        updateBgBtn();
 
-        [cutoffInput, resonanceInput, volumeInput].forEach(slider => {
-            const group = slider.closest('.control-group');
-            slider.addEventListener('pointerdown', () => group && group.classList.add('dragging'));
-            window.addEventListener('pointerup', () => group && group.classList.remove('dragging'));
-            slider.addEventListener('input', () => updateSliderFill(slider));
+        bgModeBtn.addEventListener('click', () => {
+            bgAnchorEnabled = !bgAnchorEnabled;
+            localStorage.setItem('noise_bg_anchor', bgAnchorEnabled ? 'on' : 'off');
+            updateBgBtn();
+            if (isPlaying) {
+                if (bgAnchorEnabled) {
+                    initKeepAliveWav(audioCtx ? audioCtx.sampleRate : 48000);
+                    bgKeepAlive.play().catch(() => {});
+                } else {
+                    bgKeepAlive.pause();
+                }
+            }
         });
 
-        // --- 60s Pure Silent WAV matching exact AudioContext sampleRate ---
+        // --- Lightweight 15s Silent WAV matching AudioContext sampleRate ---
         function initKeepAliveWav(sampleRate) {
             if (keepAliveReady) return;
             const sr = sampleRate || 48000;
-            const numSamples = sr * 60; // 60 seconds = no frequent loop boundary
+            const numSamples = sr * 15;
             const buffer = new ArrayBuffer(44 + numSamples * 2);
             const view = new DataView(buffer);
 
@@ -576,24 +559,20 @@
             resonanceVal.textContent = parseFloat(resonanceInput.value).toFixed(1);
             volumeVal.textContent = Math.round(volumeInput.value * 100) + '%';
 
-            [cutoffInput, resonanceInput, volumeInput].forEach(updateSliderFill);
-
             document.querySelectorAll('.btn-noise').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.type === currentNoiseType);
             });
         }
         restoreSettings();
 
-        // --- Media Session API (Lock Screen Controls) ---
+        // --- Media Session API (Called ONLY on start/stop/type-change, never while dragging) ---
         function updateMediaSession() {
             if (!('mediaSession' in navigator)) return;
-
             navigator.mediaSession.metadata = new MediaMetadata({
                 title: NOISE_LABELS[currentNoiseType] || 'Noise Generator',
-                artist: `Cutoff ${cutoffInput.value} Hz • Background Mode`,
-                album: 'Noise Engine PWA'
+                artist: `Cutoff ${cutoffInput.value} Hz`,
+                album: 'Noise Engine'
             });
-
             navigator.mediaSession.setActionHandler('play', () => {
                 if (!isPlaying) startAudio();
             });
@@ -605,17 +584,18 @@
             });
         }
 
-        // --- 30s Seamless, DC-Corrected, Safe-Headroom Noise Buffer ---
-        function createNoiseBuffer(ctx, type) {
-            const durationSec = 30;
-            const bufferSize = durationSec * ctx.sampleRate;
-            const fadeSamples = Math.floor(0.5 * ctx.sampleRate); // 500ms crossfade
+        // --- Lightweight Cached 5s Buffer (Matches Original Simplicity + Smooth Loop) ---
+        function getNoiseBuffer(ctx, type) {
+            if (bufferCache[type]) return bufferCache[type];
+
+            const bufferSize = 5 * ctx.sampleRate;
+            const fadeSamples = Math.floor(0.08 * ctx.sampleRate); // 80ms crossfade
             const rawLen = bufferSize + fadeSamples;
             const raw = new Float32Array(rawLen);
 
             if (type === 'white') {
                 for (let i = 0; i < rawLen; i++) {
-                    raw[i] = Math.random() * 2 - 1;
+                    raw[i] = (Math.random() * 2 - 1) * 0.6;
                 }
             } else if (type === 'pink') {
                 let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
@@ -627,7 +607,7 @@
                     b3 = 0.86650 * b3 + white * 0.3104856;
                     b4 = 0.55000 * b4 + white * 0.5329522;
                     b5 = -0.7616 * b5 - white * 0.0168980;
-                    raw[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.11;
+                    raw[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.09;
                     b6 = white * 0.115926;
                 }
             } else {
@@ -635,40 +615,22 @@
                 for (let i = 0; i < rawLen; i++) {
                     const white = Math.random() * 2 - 1;
                     lastOut = (lastOut + (0.02 * white)) / 1.02;
-                    raw[i] = lastOut;
+                    raw[i] = lastOut * 2.5;
                 }
             }
-
-            // Remove DC offset so waveform is centered at 0
-            let sum = 0;
-            for (let i = 0; i < rawLen; i++) sum += raw[i];
-            const mean = sum / rawLen;
-
-            let peak = 0.0001;
-            for (let i = 0; i < rawLen; i++) {
-                raw[i] -= mean;
-                const abs = Math.abs(raw[i]);
-                if (abs > peak) peak = abs;
-            }
-
-            // Normalize to 0.5 for generous headroom even at high resonance
-            const scale = 0.5 / peak;
 
             const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
             const output = buffer.getChannelData(0);
 
             for (let i = 0; i < bufferSize; i++) {
-                output[i] = raw[i] * scale;
+                output[i] = raw[i];
             }
-
-            // Equal-power crossfade tail into head for a 100% click-free loop
             for (let i = 0; i < fadeSamples; i++) {
                 const t = i / fadeSamples;
-                const fadeIn = Math.sin(t * Math.PI * 0.5);
-                const fadeOut = Math.cos(t * Math.PI * 0.5);
-                output[i] = output[i] * fadeIn + (raw[bufferSize + i] * scale) * fadeOut;
+                output[i] = output[i] * t + raw[bufferSize + i] * (1 - t);
             }
 
+            bufferCache[type] = buffer;
             return buffer;
         }
 
@@ -678,7 +640,7 @@
             toggleBtn.classList.toggle('playing', playing);
             statusDot.classList.toggle('live', playing);
             neonEq.classList.toggle('live', playing);
-            statusBadge.textContent = playing ? 'ACTIVE • BACKGROUND' : 'STANDBY • PWA';
+            statusBadge.textContent = playing ? 'ACTIVE' : 'STANDBY • PWA';
             if ('mediaSession' in navigator) {
                 navigator.mediaSession.playbackState = playing ? 'playing' : 'paused';
             }
@@ -690,40 +652,38 @@
             }
 
             if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)({
-                    latencyHint: 'playback'
-                });
-                audioCtx.onstatechange = () => {
-                    if (isPlaying && audioCtx.state === 'suspended') {
-                        audioCtx.resume().catch(() => {});
-                    }
-                };
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             }
-
-            initKeepAliveWav(audioCtx.sampleRate);
-            bgKeepAlive.play().catch(() => {});
 
             if (audioCtx.state === 'suspended') {
                 audioCtx.resume();
             }
 
-            filterNode = audioCtx.createBiquadFilter();
-            filterNode.type = 'lowpass';
+            if (bgAnchorEnabled) {
+                initKeepAliveWav(audioCtx.sampleRate);
+                bgKeepAlive.play().catch(() => {});
+            }
+
+            if (!filterNode) {
+                filterNode = audioCtx.createBiquadFilter();
+                filterNode.type = 'lowpass';
+            }
             filterNode.frequency.setValueAtTime(parseFloat(cutoffInput.value), audioCtx.currentTime);
             filterNode.Q.setValueAtTime(parseFloat(resonanceInput.value), audioCtx.currentTime);
 
-            gainNode = audioCtx.createGain();
+            if (!gainNode) {
+                gainNode = audioCtx.createGain();
+                filterNode.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+            }
             gainNode.gain.setValueAtTime(parseFloat(volumeInput.value), audioCtx.currentTime);
 
             noiseSource = audioCtx.createBufferSource();
-            noiseSource.buffer = createNoiseBuffer(audioCtx, currentNoiseType);
+            noiseSource.buffer = getNoiseBuffer(audioCtx, currentNoiseType);
             noiseSource.loop = true;
-
             noiseSource.connect(filterNode);
-            filterNode.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-
             noiseSource.start(0);
+
             setUiPlaying(true);
             updateMediaSession();
         }
@@ -745,25 +705,14 @@
                 noiseSource.disconnect();
             }
             noiseSource = audioCtx.createBufferSource();
-            noiseSource.buffer = createNoiseBuffer(audioCtx, currentNoiseType);
+            noiseSource.buffer = getNoiseBuffer(audioCtx, currentNoiseType);
             noiseSource.loop = true;
             noiseSource.connect(filterNode);
             noiseSource.start(0);
             updateMediaSession();
         }
 
-        document.addEventListener('visibilitychange', () => {
-            if (isPlaying) {
-                if (audioCtx && audioCtx.state === 'suspended') {
-                    audioCtx.resume().catch(() => {});
-                }
-                if (bgKeepAlive.paused) {
-                    bgKeepAlive.play().catch(() => {});
-                }
-            }
-        });
-
-        // --- Control Handlers ---
+        // --- Control Handlers (Zero disk/IPC work during slider movement) ---
         document.querySelectorAll('.btn-noise').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 document.querySelectorAll('.btn-noise').forEach(b => b.classList.remove('active'));
@@ -783,29 +732,35 @@
             const val = e.target.value;
             cutoffVal.textContent = val + ' Hz';
             filterReadout.textContent = `LPF ${val} HZ`;
-            localStorage.setItem('noise_cutoff', val);
             if (filterNode && audioCtx) {
                 filterNode.frequency.setTargetAtTime(parseFloat(val), audioCtx.currentTime, 0.05);
             }
+        });
+        cutoffInput.addEventListener('change', (e) => {
+            localStorage.setItem('noise_cutoff', e.target.value);
             if (isPlaying) updateMediaSession();
         });
 
         resonanceInput.addEventListener('input', (e) => {
             const val = parseFloat(e.target.value);
             resonanceVal.textContent = val.toFixed(1);
-            localStorage.setItem('noise_resonance', val);
             if (filterNode && audioCtx) {
                 filterNode.Q.setTargetAtTime(val, audioCtx.currentTime, 0.05);
             }
+        });
+        resonanceInput.addEventListener('change', (e) => {
+            localStorage.setItem('noise_resonance', e.target.value);
         });
 
         volumeInput.addEventListener('input', (e) => {
             const val = parseFloat(e.target.value);
             volumeVal.textContent = Math.round(val * 100) + '%';
-            localStorage.setItem('noise_volume', val);
             if (gainNode && audioCtx) {
                 gainNode.gain.setTargetAtTime(val, audioCtx.currentTime, 0.05);
             }
+        });
+        volumeInput.addEventListener('change', (e) => {
+            localStorage.setItem('noise_volume', e.target.value);
         });
     </script>
 </body>
