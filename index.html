@@ -68,7 +68,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: background-color 0.25s ease, color 0.25s ease;
         }
 
         .app-shell {
@@ -102,25 +101,11 @@
             height: 10px;
             border-radius: 50%;
             background: var(--text-muted);
-            transition: background-color 0.25s ease;
-            will-change: transform, opacity;
         }
 
         .status-dot.live {
             background: var(--neon);
             box-shadow: 0 0 10px var(--neon), 0 0 22px var(--neon-glow-strong);
-            animation: neonPulse 1.8s infinite ease-in-out;
-        }
-
-        @keyframes neonPulse {
-            0%, 100% {
-                transform: scale(0.95);
-                opacity: 0.78;
-            }
-            50% {
-                transform: scale(1.22);
-                opacity: 1;
-            }
         }
 
         .brand-title {
@@ -142,16 +127,11 @@
             cursor: pointer;
             display: grid;
             place-items: center;
-            transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
 
         .icon-action-btn:hover {
             border-color: var(--neon);
             box-shadow: 0 0 12px var(--neon-glow);
-        }
-
-        .icon-action-btn:active {
-            transform: scale(0.94);
         }
 
         /* INFO CARD */
@@ -195,7 +175,7 @@
             margin: 4px 0 0;
         }
 
-        /* GPU-COMPOSITED GLOWING EQUALIZER BARS (ZERO LAYOUT THRASH) */
+        /* STATIC NEON BARS (NO ANIMATION = ZERO AUDIO STUTTER) */
         .neon-eq {
             display: flex;
             align-items: flex-end;
@@ -206,30 +186,19 @@
 
         .neon-eq span {
             width: 4px;
-            height: 24px;
             border-radius: 999px;
             background: var(--text-muted);
-            transform-origin: bottom center;
-            transform: scaleY(0.25);
-            will-change: transform, opacity;
-            transition: background-color 0.25s ease;
         }
+
+        .neon-eq span:nth-child(1) { height: 10px; }
+        .neon-eq span:nth-child(2) { height: 18px; }
+        .neon-eq span:nth-child(3) { height: 24px; }
+        .neon-eq span:nth-child(4) { height: 15px; }
+        .neon-eq span:nth-child(5) { height: 11px; }
 
         .neon-eq.live span {
             background: var(--neon);
-            box-shadow: 0 0 8px var(--neon), 0 0 16px var(--neon-glow-strong);
-            animation: eqWave 1.15s infinite ease-in-out;
-        }
-
-        .neon-eq.live span:nth-child(1) { animation-delay: 0.0s; }
-        .neon-eq.live span:nth-child(2) { animation-delay: 0.18s; }
-        .neon-eq.live span:nth-child(3) { animation-delay: 0.36s; }
-        .neon-eq.live span:nth-child(4) { animation-delay: 0.12s; }
-        .neon-eq.live span:nth-child(5) { animation-delay: 0.28s; }
-
-        @keyframes eqWave {
-            0%, 100% { transform: scaleY(0.28); opacity: 0.65; }
-            50% { transform: scaleY(1); opacity: 1; }
+            box-shadow: 0 0 8px var(--neon), 0 0 14px var(--neon-glow-strong);
         }
 
         /* CONTROL CARD */
@@ -270,7 +239,6 @@
             font-weight: 700;
             font-size: 0.86rem;
             cursor: pointer;
-            transition: all 0.2s ease;
         }
 
         .btn-noise:hover {
@@ -310,7 +278,6 @@
             border-radius: 8px;
             border: 1px solid var(--border-subtle);
             text-shadow: 0 0 8px var(--neon-glow);
-            transition: box-shadow 0.2s ease, border-color 0.2s ease;
         }
 
         .control-group:focus-within .value-pill,
@@ -337,7 +304,6 @@
             box-shadow: 0 0 10px rgba(57, 255, 20, 0.25), inset 0 0 4px rgba(0, 0, 0, 0.5);
             outline: none;
             cursor: pointer;
-            transition: box-shadow 0.2s ease;
         }
 
         input[type="range"]:hover,
@@ -355,17 +321,11 @@
             border: 3px solid var(--bg-surface);
             box-shadow: 0 0 10px var(--neon), 0 0 22px var(--neon-glow-strong);
             cursor: pointer;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        input[type="range"]:hover::-webkit-slider-thumb {
-            transform: scale(1.1);
-            box-shadow: 0 0 14px var(--neon), 0 0 28px var(--neon-glow-strong);
         }
 
         input[type="range"]:active::-webkit-slider-thumb {
-            transform: scale(1.22);
-            box-shadow: 0 0 18px var(--neon), 0 0 36px var(--neon-glow-strong);
+            transform: scale(1.18);
+            box-shadow: 0 0 18px var(--neon), 0 0 34px var(--neon-glow-strong);
         }
 
         input[type="range"]::-moz-range-thumb {
@@ -376,12 +336,6 @@
             border: 3px solid var(--bg-surface);
             box-shadow: 0 0 10px var(--neon), 0 0 22px var(--neon-glow-strong);
             cursor: pointer;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        input[type="range"]:active::-moz-range-thumb {
-            transform: scale(1.22);
-            box-shadow: 0 0 18px var(--neon), 0 0 36px var(--neon-glow-strong);
         }
 
         /* PLAY BUTTON */
@@ -399,15 +353,10 @@
             text-transform: uppercase;
             cursor: pointer;
             box-shadow: 0 0 16px var(--neon-glow), 0 0 32px rgba(57, 255, 20, 0.28);
-            transition: transform 0.15s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
 
         .btn-toggle:hover {
             box-shadow: 0 0 22px var(--neon-glow-strong), 0 0 42px var(--neon-glow);
-        }
-
-        .btn-toggle:active {
-            transform: scale(0.97);
         }
 
         .btn-toggle.playing {
@@ -539,7 +488,7 @@
         let noiseSource = null;
         let filterNode = null;
         let gainNode = null;
-        let limiterNode = null;
+        let keepAliveReady = false;
         let isPlaying = false;
         let currentNoiseType = localStorage.getItem('noise_type') || 'brown';
 
@@ -559,10 +508,11 @@
             slider.addEventListener('input', () => updateSliderFill(slider));
         });
 
-        // --- Clean 44.1kHz 10s Silent WAV Keep-Alive Anchor (no resampling clicks) ---
-        function createKeepAliveWavUrl() {
-            const sampleRate = 44100;
-            const numSamples = sampleRate * 10;
+        // --- 60s Pure Silent WAV matching exact AudioContext sampleRate ---
+        function initKeepAliveWav(sampleRate) {
+            if (keepAliveReady) return;
+            const sr = sampleRate || 48000;
+            const numSamples = sr * 60; // 60 seconds = no frequent loop boundary
             const buffer = new ArrayBuffer(44 + numSamples * 2);
             const view = new DataView(buffer);
 
@@ -577,20 +527,18 @@
             view.setUint32(16, 16, true);
             view.setUint16(20, 1, true);
             view.setUint16(22, 1, true);
-            view.setUint32(24, sampleRate, true);
-            view.setUint32(28, sampleRate * 2, true);
+            view.setUint32(24, sr, true);
+            view.setUint32(28, sr * 2, true);
             view.setUint16(32, 2, true);
             view.setUint16(34, 16, true);
             writeStr(36, 'data');
             view.setUint32(40, numSamples * 2, true);
-            // ArrayBuffer is already zero-initialized (pure digital silence)
 
             const blob = new Blob([buffer], { type: 'audio/wav' });
-            return URL.createObjectURL(blob);
+            bgKeepAlive.src = URL.createObjectURL(blob);
+            bgKeepAlive.volume = 0.01;
+            keepAliveReady = true;
         }
-
-        bgKeepAlive.src = createKeepAliveWavUrl();
-        bgKeepAlive.volume = 0.01;
 
         // --- Theme Toggle ---
         function applyTheme(theme) {
@@ -657,11 +605,11 @@
             });
         }
 
-        // --- Seamless, Normalized Noise Buffer (No Clipping, No Loop Click) ---
+        // --- 30s Seamless, DC-Corrected, Safe-Headroom Noise Buffer ---
         function createNoiseBuffer(ctx, type) {
-            const durationSec = 10;
+            const durationSec = 30;
             const bufferSize = durationSec * ctx.sampleRate;
-            const fadeSamples = Math.floor(0.25 * ctx.sampleRate); // 250ms crossfade
+            const fadeSamples = Math.floor(0.5 * ctx.sampleRate); // 500ms crossfade
             const rawLen = bufferSize + fadeSamples;
             const raw = new Float32Array(rawLen);
 
@@ -691,13 +639,20 @@
                 }
             }
 
-            // Normalize peak to 0.75 so it never clips before or inside the filter
+            // Remove DC offset so waveform is centered at 0
+            let sum = 0;
+            for (let i = 0; i < rawLen; i++) sum += raw[i];
+            const mean = sum / rawLen;
+
             let peak = 0.0001;
             for (let i = 0; i < rawLen; i++) {
+                raw[i] -= mean;
                 const abs = Math.abs(raw[i]);
                 if (abs > peak) peak = abs;
             }
-            const scale = 0.75 / peak;
+
+            // Normalize to 0.5 for generous headroom even at high resonance
+            const scale = 0.5 / peak;
 
             const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
             const output = buffer.getChannelData(0);
@@ -734,8 +689,6 @@
                 try { navigator.audioSession.type = 'playback'; } catch (_) {}
             }
 
-            bgKeepAlive.play().catch(() => {});
-
             if (!audioCtx) {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)({
                     latencyHint: 'playback'
@@ -746,6 +699,9 @@
                     }
                 };
             }
+
+            initKeepAliveWav(audioCtx.sampleRate);
+            bgKeepAlive.play().catch(() => {});
 
             if (audioCtx.state === 'suspended') {
                 audioCtx.resume();
@@ -759,22 +715,13 @@
             gainNode = audioCtx.createGain();
             gainNode.gain.setValueAtTime(parseFloat(volumeInput.value), audioCtx.currentTime);
 
-            // Soft limiter prevents digital crackle even at high resonance
-            limiterNode = audioCtx.createDynamicsCompressor();
-            limiterNode.threshold.setValueAtTime(-3, audioCtx.currentTime);
-            limiterNode.knee.setValueAtTime(12, audioCtx.currentTime);
-            limiterNode.ratio.setValueAtTime(12, audioCtx.currentTime);
-            limiterNode.attack.setValueAtTime(0.003, audioCtx.currentTime);
-            limiterNode.release.setValueAtTime(0.15, audioCtx.currentTime);
-
             noiseSource = audioCtx.createBufferSource();
             noiseSource.buffer = createNoiseBuffer(audioCtx, currentNoiseType);
             noiseSource.loop = true;
 
             noiseSource.connect(filterNode);
             filterNode.connect(gainNode);
-            gainNode.connect(limiterNode);
-            limiterNode.connect(audioCtx.destination);
+            gainNode.connect(audioCtx.destination);
 
             noiseSource.start(0);
             setUiPlaying(true);
